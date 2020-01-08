@@ -1,11 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import 
+import SideMenu from './components/sidemenu/index';
+import Footer from './components/footer/footer';
+import Article from './components/article/index';
 
 const App = () => {
   return (
-    <h1>Hello, World!</h1>
+    <div className="app-container">
+      <div className="app-sidemenu">
+        <SideMenu />
+      </div>
+      <div className="app-contents">
+        <Article />
+        <Footer />
+      </div>
+    </div>
   );
 }
 

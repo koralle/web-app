@@ -1,0 +1,10 @@
+.article {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.article-title {
+  display: flex;
+  flex-direction: row;
+}
