@@ -1,23 +1,38 @@
-import React, {useState} from 'react';
-import SecondMenu from './secondMenu';
-import ThirdMenu from './thirdMenu';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import isDropDownOpenModule from '../../modules/isDropDownOpenModule';
+import articleListModule from '../../modules/articleListModule';
 
 const AddMenuButton = (props) => {
 
-  const toggleIsListOpen = () => {
-    props.setIsListOpen(!(props.isListOpen));
-  }
+    // dispatch
+  const dispatch = useDispatch();
+
+  // stateの取得
+  //const isOpen = useSelector(state => state.articleList.mainMenus[String(props.id)].isDropDownOpen);
+  //const isOpen = useSelector(state => state.isDropDownOpen);
+  const articleList = useSelector(state => state.articleList);
+
+  const toggle = () => {
+    console.log(articleList.mainMenus[String(props.id)]);
+    dispatch(articleListModule.actions.toggleIsOpen(props.id));
+  };
+
+  const addNewMainMenu   = () => dispatch(articleListModule.actions.addNewMainMenu());
+  const addNewSecondMenu = () => dispatch(articleListModule.actions.addNewSecondMenu(props.id));
+  const addNewThirdMenu  = () => dispatch(articleListModule.actions.addNewThirdMenu(props.id));
+
 
   return (
     <div>
-      <button onClick={toggleIsListOpen}>
+      <button onClick={toggle}>
         +
       </button>
-      {props.isListOpen && (
+      {articleList.mainMenus[String(props.id)].isDropDownOpen && (
         <ul>
-            <li onClick={props.handleClickMenu}>Add Main Menu</li>
-            <li onClick={props.addSecondMenu}>Add 2nd Menu</li>
-            <li onClick={props.addThirdMenu}>Add 3rd Menu</li>
+            <li onClick={addNewMainMenu}>Add Main Menu</li>
+            <li onClick={addNewSecondMenu}>Add 2nd Menu</li>
+            <li onClick={addNewThirdMenu}>Add 3rd Menu</li>
         </ul>
       )}
     </div>

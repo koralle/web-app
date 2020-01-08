@@ -3,42 +3,48 @@ import MainMenu from './mainMenu';
 import SecondMenu from './secondMenu';
 import ThirdMenu from './thirdMenu';
 import AddMenuButton from './addMenuButton';
+import { useDispatch, useSelector } from 'react-redux';
+import articleListModule from '../../modules/articleListModule';
 import './menuWrapper.css';
 
 const MenuWrapper = (props) => {
-  const [secondMenuList, setSecondMenuList] = useState([]);
-  const [thirdMenuList, setThirdMenuList] = useState([]);
 
-  const addSecondMenu = () => {
-    setSecondMenuList(secondMenuList.concat(<SecondMenu />));
-    props.handleClickMenu();
-  }
+  const dispatch = useDispatch();
 
-  const addThirdMenu = () => {
-    setThirdMenuList(thirdMenuList.concat(<ThirdMenu />));
-    props.handleClickMenu();
-  }
+  const mainArticleMenus = useSelector(state => state.articleList.mainMenus[props.id]);
+  console.log(mainArticleMenus);
 
-  const secondMenus = secondMenuList.map(
-    (menu, i) => {
+  const addSecondMenu = () => dispatch(articleListModule.actions.addNewSecondMenu());
+  const addThirdMenu = () => dispatch(articleListModule.actions.addNewThirdMenu());
+
+  const secondMenus = mainArticleMenus.secondMenuList.map(
+    (i) => {
+      const unique_article_id = mainArticleMenus.secondMenuList[i];
+      console.log(mainArticleMenus);
       return (
         <li>
-          {menu}
+          <SecondMenu
+            key={unique_article_id}
+            id={unique_article_id}
+          />
         </li>
       );
     }
   );
 
-  const thirdMenus = thirdMenuList.map(
-    (menu, i) => {
+  const thirdMenus = mainArticleMenus.thirdMenuList.map(
+    (i) => {
+      const unique_article_id = mainArticleMenus.secondMenuList[i];
       return (
         <li>
-          {menu}
+          <ThirdMenu
+            key={unique_article_id}
+            id={unique_article_id}
+          />
         </li>
       );
     }
   );
-
   return (
     <div className="menuWwapper">
       <div>
@@ -50,13 +56,7 @@ const MenuWrapper = (props) => {
           {thirdMenus}
         </ul>
       </div>
-      <AddMenuButton
-        isListOpen={props.isListOpen}
-        setIsListOpen={props.setIsListOpen}
-        addMenuWrapper={props.addMenuWrapper}
-        addSecondMenu={addSecondMenu}
-        addThirdMenu={addThirdMenu}
-      />
+      <AddMenuButton id={props.id}/>
     </div>
   );
 }

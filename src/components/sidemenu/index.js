@@ -1,35 +1,26 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import MenuWrapper from './menuWrapper';
-
+import articleListModule from '../../modules/articleListModule';
 import './sidemenu.css';
 
 const SideMenu = () => {
-  const [menuWrapperList, setMenuWrapperList] = useState([<MenuWrapper />]);
-  const [isListOpen, setIsListOpen] = useState(false);
 
-  const addMenuWrapper = () => {
-    setMenuWrapperList(
-      menuWrapperList.concat(
-        <MenuWrapper
-          menuWrapperList={menuWrapperList}
-          setMenuWrapperList={setMenuWrapperList}
-          isListOpen={isListOpen}
-          setIsListOpen={setIsListOpen}
-          handleCickMenu={handleClickMenu}
-        />
-      ));
-    handleClickMenu();
-  }
+  // dispatch
+  const dispatch = useDispatch();
 
-  const handleClickMenu = () => {
-    setIsListOpen(false);
-  }
+  // stateの状態を取得
+  const articleList = useSelector(state => state.articleList);
 
-  const menuWrappers = menuWrapperList.map(
+  const menuWrappers = articleList.rootArticleList.map(
     (menu, i) => {
+      const unique_article_id = articleList.rootArticleList[i];
       return (
         <li>
-          {menu}
+          <MenuWrapper
+            key={unique_article_id}
+            id={unique_article_id}
+          />
         </li>
         );
     }
