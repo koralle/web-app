@@ -50,8 +50,8 @@ const articleListModule = createSlice({
       };
       state.mainMenus[tmp_id] = tmp;
       state.rootArticleList.push(tmp_id);
-      if (state.mainMenus[tmp_id].isDropDownOpen === true) {
-        state.mainMenus[tmp_id].isDropDownOpen = false;
+      if (state.mainMenus[String(action.payload)].isDropDownOpen === true) {
+        state.mainMenus[String(action.payload)].isDropDownOpen = false;
       }
     },
     addNewSecondMenu: (state, action) => {

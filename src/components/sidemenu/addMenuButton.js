@@ -18,7 +18,7 @@ const AddMenuButton = (props) => {
     dispatch(articleListModule.actions.toggleIsOpen(props.id));
   };
 
-  const addNewMainMenu   = () => dispatch(articleListModule.actions.addNewMainMenu());
+  const addNewMainMenu   = () => dispatch(articleListModule.actions.addNewMainMenu(props.id));
   const addNewSecondMenu = () => dispatch(articleListModule.actions.addNewSecondMenu(props.id));
   const addNewThirdMenu  = () => dispatch(articleListModule.actions.addNewThirdMenu(props.id));
 
