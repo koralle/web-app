@@ -1,8 +1,8 @@
 import React from 'react';
 
-const secondMenu = () => {
+const secondMenu = (props) => {
   return (
-    <a> 2nd Menu </a>
+    <p onClick={props.onClickFunction}> 2nd Menu </p>
   );
 }
 

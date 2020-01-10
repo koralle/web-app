@@ -1,96 +1,90 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-class Menu {
-  constructor(id, menu_level, title, content) {
-    this.id = id;
-    this.menu_level = menu_level;
-    this.title = title;
-    this.content = content;
-  }
-}
-
 const articleListModule = createSlice({
   name: "articleList",
   initialState: {
-    rootArticleList: ["1"],
-    nextArticleId: 2,
+    mainMenuList: ["1"],
     mainMenus: {
-      "1" : {
-        menu: {
-          id: "1",
-          level: 1,
-          title: "",
-          content: ""
-        },
+      "1": {
+        id: "1",
         secondMenuList: [],
         thirdMenuList: [],
         isDropDownOpen: false,
       }
     },
-    secondMenus: {
 
+    articles: {
+      "1": {
+        id: "1",
+        title: "",
+        content: "",
+      }
     },
-    thirdMenus: {
-
-    }
+    nextId: 2,
   },
   reducers: {
     addNewMainMenu: (state, action) => {
-      const tmp_id = String(state.nextArticleId++);
-      const tmp = {
-        menu: {
-          id: tmp_id,
-          level: 1,
-          title: "",
-          content: ""
-        },
+      const newId = String(state.nextId++);
+      const newArticle = {
+        id: newId,
+        title: "",
+        content: ""
+      };
+
+      const newMainMenu = {
+        id: newId,
         secondMenuList: [],
         thirdMenuList: [],
         isDropDownOpen: false,
-      };
-      state.mainMenus[tmp_id] = tmp;
-      state.rootArticleList.push(tmp_id);
+      }
+      state.articles[newId] = newArticle;
+      state.mainMenus[newId] = newMainMenu;
+      state.mainMenuList.push(newId);
       if (state.mainMenus[String(action.payload)].isDropDownOpen === true) {
         state.mainMenus[String(action.payload)].isDropDownOpen = false;
       }
     },
     addNewSecondMenu: (state, action) => {
-      const tmp_id = String(state.nextArticleId++);
-      const tmp = {
-        id: tmp_id,
-        level: 2,
+      const newId = String(state.nextId++);
+      const newArticle = {
+        id: newId,
         title: "",
         content: "",
       };
-      state.secondMenus[tmp_id] = tmp;
-      state.mainMenus[String(action.payload)].secondMenuList.push(tmp_id);
+      state.articles[newId] = newArticle;
+      state.mainMenus[String(action.payload)].secondMenuList.push(newId);
+
       if (state.mainMenus[String(action.payload)].isDropDownOpen === true) {
         state.mainMenus[String(action.payload)].isDropDownOpen = false;
       }
     },
     addNewThirdMenu: (state, action) => {
-      const tmp_id = String(state.nextArticleId++);
-      const tmp = {
-        id: tmp_id,
-        level: 3,
+      const newId = String(state.nextId++);
+      const newArticle = {
+        id: newId,
         title: "",
         content: "",
       }
-      state.thirdMenus[tmp_id] = tmp;
-      state.mainMenus[String(action.payload)].thirdMenuList.push(tmp_id);
+      state.articles[newId] = newArticle;
+      state.mainMenus[String(action.payload)].thirdMenuList.push(newId);
+
       if (state.mainMenus[String(action.payload)].isDropDownOpen === true) {
         state.mainMenus[String(action.payload)].isDropDownOpen = false;
       }
     },
     toggleIsOpen: (state, action) => {
-      console.log(state.mainMenus[String(action.payload)].isDropDownOpen);
       if (state.mainMenus[String(action.payload)].isDropDownOpen === false) {
         state.mainMenus[String(action.payload)].isDropDownOpen = true;
-      }
-      else {
+      } else {
         state.mainMenus[String(action.payload)].isDropDownOpen = false;
       }
     },
+    saveArticleTitle: (state, action) => {
+      state.articles[String(action.payload.id)].title = action.payload.text;
+    },
+    saveArticleContent: (state, action) => {
+      state.articles[String(action.payload.id)].content = action.payload.text;
+    }
   }
 });
 

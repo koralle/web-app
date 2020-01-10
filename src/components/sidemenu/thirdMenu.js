@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ThirdMenu = () => {
+const ThirdMenu = (props) => {
   return (
-    <a>
+    <p onClick={props.onClickFunction}>
       3rd Menu
-    </a>
+    </p>
   );
 }
 

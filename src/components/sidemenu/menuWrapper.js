@@ -1,62 +1,46 @@
-import React, {useState} from 'react';
+import React from 'react';
+import AddMenuButton from './addMenuButton';
+import { useDispatch, useSelector } from 'react-redux';
+import editTitleModule from '../../modules/editTitleModule';
+import editContentModule from '../../modules/editContentModule';
 import MainMenu from './mainMenu';
 import SecondMenu from './secondMenu';
 import ThirdMenu from './thirdMenu';
-import AddMenuButton from './addMenuButton';
-import { useDispatch, useSelector } from 'react-redux';
-import articleListModule from '../../modules/articleListModule';
 import './menuWrapper.css';
 
 const MenuWrapper = (props) => {
 
   const dispatch = useDispatch();
+  const articles = useSelector(state => state.articleList.articles);
+  const mainMenus = useSelector(state => state.articleList.mainMenus[String(props.articleId)]);
 
-  const mainArticleMenus = useSelector(state => state.articleList.mainMenus[props.id]);
-  console.log(mainArticleMenus);
+  const displayArticle = (id) => {
+    dispatch(editTitleModule.actions.displayTitle({ id:id, title: articles[String(id)].title }));
+    dispatch(editContentModule.actions.displayContent({id:id, content: articles[String(id)].content}));
+  }
 
-  const addSecondMenu = () => dispatch(articleListModule.actions.addNewSecondMenu());
-  const addThirdMenu = () => dispatch(articleListModule.actions.addNewThirdMenu());
+  const secondMenus = mainMenus.secondMenuList.map((menu, index) => {
+    const unique_id = mainMenus.secondMenuList[index];
+    return <li><SecondMenu key={unique_id} articleId={unique_id} onClickFunction={() => displayArticle(unique_id)}/></li>;
+  });
 
-  const secondMenus = mainArticleMenus.secondMenuList.map(
-    (i) => {
-      const unique_article_id = mainArticleMenus.secondMenuList[i];
-      console.log(mainArticleMenus);
-      return (
-        <li>
-          <SecondMenu
-            key={unique_article_id}
-            id={unique_article_id}
-          />
-        </li>
-      );
-    }
-  );
+  const thirdMenus = mainMenus.thirdMenuList.map((menu, index) => {
+    const unique_id = mainMenus.thirdMenuList[index];
+    return <li><ThirdMenu key={unique_id} articleId={unique_id} onClickFunction={() => displayArticle(unique_id)}/></li>;
+  });
 
-  const thirdMenus = mainArticleMenus.thirdMenuList.map(
-    (i) => {
-      const unique_article_id = mainArticleMenus.secondMenuList[i];
-      return (
-        <li>
-          <ThirdMenu
-            key={unique_article_id}
-            id={unique_article_id}
-          />
-        </li>
-      );
-    }
-  );
   return (
     <div className="menuWwapper">
       <div>
         <ul className="menu-wrapper-list">
           <li>
-            <MainMenu />
+            <MainMenu key={props.articleId} articleId={props.articleId} onClickFunction={() => displayArticle(props.articleId)}/>
           </li>
           {secondMenus}
           {thirdMenus}
         </ul>
       </div>
-      <AddMenuButton id={props.id}/>
+      <AddMenuButton articleId={props.articleId}/>
     </div>
   );
 }

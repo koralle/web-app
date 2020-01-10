@@ -1,30 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import MenuWrapper from './menuWrapper';
-import articleListModule from '../../modules/articleListModule';
 import './sidemenu.css';
 
 const SideMenu = () => {
 
-  // dispatch
-  const dispatch = useDispatch();
-
   // stateの状態を取得
-  const articleList = useSelector(state => state.articleList);
+  const mainMenuList = useSelector(state => state.articleList.mainMenuList);
 
-  const menuWrappers = articleList.rootArticleList.map(
-    (menu, i) => {
-      const unique_article_id = articleList.rootArticleList[i];
-      return (
-        <li>
-          <MenuWrapper
-            key={unique_article_id}
-            id={unique_article_id}
-          />
-        </li>
-        );
-    }
-  )
+  const menuWrappers = mainMenuList.map((menu, index) => {
+    const unique_id = mainMenuList[index];
+    return <li> <MenuWrapper key={unique_id} articleId={unique_id} /></li>
+  });
 
   return (
     <div className="sidemenu">

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const MainMenu = () => {
+const MainMenu = (props) => {
   return (
-    <a>Main Menu</a>
+    <p onClick={props.onClickFunction}>Main Menu</p>
   );
 }
 

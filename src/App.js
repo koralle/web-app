@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SideMenu from './components/sidemenu/index';
 import Footer from './components/footer/footer';
-import Article from './components/article/index';
+import Article from './components/editor/index';
 
 const App = () => {
   return (
