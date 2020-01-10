@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import editTitleModule from '../../modules/editTitleModule';
+import TextField from '@material-ui/core/TextField';
 
 const EditTitle = (props) => {
   const articleId = useSelector(state => state.editTitle.articleId);
@@ -15,11 +16,19 @@ const EditTitleForm = (props) => {
   const editingText = useSelector(state => state.editTitle.inputText);
 
   const handleChangeInputText = (e) => {
-    dispatch(editTitleModule.actions.handleChangeInputText(e));
+    dispatch(editTitleModule.actions.handleChangeInputText(e.target.value));
   }
 
   return (
-    <input type="text" onChange={handleChangeInputText} value={editingText}/>
+    <form>
+      <TextField
+        id="edit-title-field"
+        label="Title"
+        variant="outlined"
+        onChange={handleChangeInputText}
+        value={editingText}
+      />
+    </form>
   );
 }
 

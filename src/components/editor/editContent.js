@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import editContentModule from '../../modules/editContentModule';
+import TextField from '@material-ui/core/TextField';
 
 const EditContent = (props) => {
   const articleId = useSelector(state => state.editContent.articleId);
@@ -15,11 +16,21 @@ const EditContentForm = (props) => {
   const editingText = useSelector(state => state.editContent.inputText);
 
   const handleChangeInputText = (e) => {
-    dispatch(editContentModule.actions.handleChangeInputText(e));
+    dispatch(editContentModule.actions.handleChangeInputText(e.target.value));
   }
 
   return (
-    <textarea onChange={handleChangeInputText}>{editingText}</textarea>
+    <form noValidate autoComplete="off">
+      <TextField
+        label="Content"
+        variant="outlined"
+        multiline
+        onChange={handleChangeInputText}
+        value={editingText}
+      >
+        {editingText}
+      </TextField>
+    </form>
   );
 }
 

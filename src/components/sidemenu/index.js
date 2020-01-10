@@ -10,7 +10,8 @@ const SideMenu = () => {
 
   const menuWrappers = mainMenuList.map((menu, index) => {
     const unique_id = mainMenuList[index];
-    return <li> <MenuWrapper key={unique_id} articleId={unique_id} /></li>
+    console.log(unique_id);
+    return <li key={unique_id}> <MenuWrapper  articleId={unique_id} /></li>
   });
 
   return (

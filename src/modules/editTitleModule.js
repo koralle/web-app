@@ -18,7 +18,7 @@ const editTitleModule = createSlice({
       else state.isEditing = false;
     },
     handleChangeInputText: (state, action) => {
-      state.inputText = action.payload.target.value;
+      state.inputText = action.payload;
     }
   },
 });

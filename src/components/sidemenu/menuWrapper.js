@@ -21,20 +21,20 @@ const MenuWrapper = (props) => {
 
   const secondMenus = mainMenus.secondMenuList.map((menu, index) => {
     const unique_id = mainMenus.secondMenuList[index];
-    return <li><SecondMenu key={unique_id} articleId={unique_id} onClickFunction={() => displayArticle(unique_id)}/></li>;
+    return <li key={unique_id}><SecondMenu  articleId={unique_id} onClickFunction={() => displayArticle(unique_id)}/></li>;
   });
 
   const thirdMenus = mainMenus.thirdMenuList.map((menu, index) => {
     const unique_id = mainMenus.thirdMenuList[index];
-    return <li><ThirdMenu key={unique_id} articleId={unique_id} onClickFunction={() => displayArticle(unique_id)}/></li>;
+    return <li key={unique_id}><ThirdMenu  articleId={unique_id} onClickFunction={() => displayArticle(unique_id)}/></li>;
   });
 
   return (
     <div className="menuWwapper">
       <div>
         <ul className="menu-wrapper-list">
-          <li>
-            <MainMenu key={props.articleId} articleId={props.articleId} onClickFunction={() => displayArticle(props.articleId)}/>
+          <li key={props.articleId}>
+            <MainMenu  articleId={props.articleId} onClickFunction={() => displayArticle(props.articleId)}/>
           </li>
           {secondMenus}
           {thirdMenus}
