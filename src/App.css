@@ -1,24 +1,47 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: 100vh;
 }
 
-.app-container {
+#app-container {
   display: flex;
   flex-direction:row;
   height: 100%;
 }
 
-.app-sidemenu {
-  width: 25%;
+#app-sidemenu {
+  margin: 0;
+  padding: 0;
+  padding: 0;
+  width: 20%;
+  height: 100vh;
   left: 0;
   position: sticky;
-}
-
-.app-contents {
-  width: 75%;
-  right: 0;
   overflow-y: scroll;
 }
 
+#app-main {
+  margin: 0;
+  padding: 0;
+  width: 80%;
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#app-article {
+  margin: 0;
+  padding: 0;
+  margin-top: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  height: calc(90vh - 30px);
+}
+
+#app-footer {
+  width: 100%;
+  min-height: 10vh;
+}

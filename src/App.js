@@ -3,18 +3,24 @@ import './App.css';
 import SideMenu from './components/sidemenu/index';
 import Footer from './components/footer/footer';
 import Article from './components/editor/index';
+import Box from '@material-ui/core/Box';
 
 const App = () => {
+
   return (
-    <div className="app-container">
-      <div className="app-sidemenu">
+    <Box id="app-container">
+      <Box id="app-sidemenu">
         <SideMenu />
-      </div>
-      <div className="app-contents">
-        <Article />
-        <Footer />
-      </div>
-    </div>
+      </Box>
+      <Box id="app-main">
+        <Box id="app-article">
+          <Article />
+        </Box>
+        <Box id="app-footer">
+          <Footer />
+        </Box>
+      </Box>
+    </Box>
   );
 }
 

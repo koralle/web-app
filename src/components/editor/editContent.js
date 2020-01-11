@@ -6,9 +6,11 @@ import TextField from '@material-ui/core/TextField';
 const EditContent = (props) => {
   const articleId = useSelector(state => state.editContent.articleId);
   const articles = useSelector(state => state.articleList.articles)
-  
+
   return (
-    <code> {articles[articleId].content} </code>
+    <p>
+      {articles[articleId].content}
+    </p>
   );
 };
 const EditContentForm = (props) => {
@@ -25,6 +27,7 @@ const EditContentForm = (props) => {
         label="Content"
         variant="outlined"
         multiline
+        fullWidth
         onChange={handleChangeInputText}
         value={editingText}
       >

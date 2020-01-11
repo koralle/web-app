@@ -7,7 +7,9 @@ const EditTitle = (props) => {
   const articleId = useSelector(state => state.editTitle.articleId);
   const articles = useSelector(state => state.articleList.articles);
   return (
-    <h1> {articles[articleId].title} </h1>
+    <h1>
+      {articles[articleId].title}
+    </h1>
   );
 };
 
@@ -25,6 +27,7 @@ const EditTitleForm = (props) => {
         id="edit-title-field"
         label="Title"
         variant="outlined"
+        fullWidth
         onChange={handleChangeInputText}
         value={editingText}
       />

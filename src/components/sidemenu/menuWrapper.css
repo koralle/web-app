@@ -3,8 +3,40 @@
   flex-direction: row;
 }
 
-.menu-wrapper-ist {
+.main-menu {
+  line-height: 1.0;
+  width: 80%;
+  
+}
+
+.main-menu .MuiTypography-root{
+  height: 24px;
+  font-size: 24px;
+}
+
+.second-menu {
   margin: 0;
   padding: 0;
-  list-style-type: none;
+  padding-left: 30px;
+}
+
+.second-menu .MuiTypography-root {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.third-menu {
+  margin: 0;
+  padding: 0;
+  padding-left: 60px;
+}
+
+.third-menu .MuiTypography-root {
+  font-size: 20px;
+  line-height: 1.5;
+
+}
+
+.MuiTypography-body1 {
+  padding-left: 15px;;
 }

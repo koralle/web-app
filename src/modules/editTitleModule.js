@@ -19,7 +19,13 @@ const editTitleModule = createSlice({
     },
     handleChangeInputText: (state, action) => {
       state.inputText = action.payload;
-    }
+    },
+    clearInputText: (state, action) => {
+      state.inputText = "";
+    },
+    startEdit: (state, action) => {
+      state.inputText = action.payload;
+    },
   },
 });
 

@@ -7,26 +7,27 @@ import editContentModule from '../../modules/editContentModule';
 import { useSelector } from 'react-redux';
 import './editor.css';
 
+
 const Editor = () => {
 
   const editTitle = useSelector(state => state.editTitle);
   const editContent = useSelector(state => state.editContent);
 
   return (
-    <div className="article">
-      <div className="article-title">
-        <div>
-          {editTitle.isEditing ? <EditTitleForm /> : <EditTitle />}
-        </div>
-        <div>
-          <EditSaveButton module={editTitleModule} saveAction="saveArticleTitle"/>
+    <div id="article">
+
+      <div id="article-title">
+        <div id="edit-title">{editTitle.isEditing ? <EditTitleForm /> : <EditTitle />}</div>
+        <div className="edit-save-button">
+          <EditSaveButton module={editTitleModule} saveAction="saveArticleTitle" />
         </div>
       </div>
-      <div className="article-content">
-        <div>
+
+      <div id="article-content">
+        <div className="edit-save-button">
           <EditSaveButton module={editContentModule} saveAction="saveArticleContent" />
         </div>
-        <div>
+        <div id="edit-content" >
           {editContent.isEditing ? <EditContentForm /> : <EditContent />}
         </div>
       </div>
