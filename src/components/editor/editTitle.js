@@ -1,24 +1,27 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import editTitleModule from '../../modules/editTitleModule';
+import editArticleModule from '../../modules/editArticleModule';
 import TextField from '@material-ui/core/TextField';
 
+
 const EditTitle = (props) => {
-  const articleId = useSelector(state => state.editTitle.articleId);
+  const editArticle = useSelector(state => state.editArticle);
   const articles = useSelector(state => state.articleList.articles);
   return (
-    <h1>
-      {articles[articleId].title}
-    </h1>
+    <h1> {articles[editArticle.articleId].title} </h1>
   );
 };
 
 const EditTitleForm = (props) => {
+  const editArticle = useSelector(state => state.editArticle);
   const dispatch = useDispatch();
-  const editingText = useSelector(state => state.editTitle.inputText);
 
   const handleChangeInputText = (e) => {
-    dispatch(editTitleModule.actions.handleChangeInputText(e.target.value));
+    dispatch(editArticleModule.actions.handleChangeInputText(
+      {
+        editTarget: "title",
+        text: e.target.value,
+      }));
   }
 
   return (
@@ -29,7 +32,7 @@ const EditTitleForm = (props) => {
         variant="outlined"
         fullWidth
         onChange={handleChangeInputText}
-        value={editingText}
+        value={editArticle.title.inputText}
       />
     </form>
   );

@@ -79,6 +79,10 @@ const articleListModule = createSlice({
         state.mainMenus[String(action.payload)].isDropDownOpen = false;
       }
     },
+    saveArticle: (state, action) => {
+      state.articles[String(action.payload.id)].title = action.payload.title;
+      state.articles[String(action.payload.id)].content = action.payload.content;
+    },
     saveArticleTitle: (state, action) => {
       state.articles[String(action.payload.id)].title = action.payload.text;
     },

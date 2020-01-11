@@ -1,37 +1,39 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import editContentModule from '../../modules/editContentModule';
+import editArticleModule from '../../modules/editArticleModule';
 import TextField from '@material-ui/core/TextField';
 
 const EditContent = (props) => {
-  const articleId = useSelector(state => state.editContent.articleId);
+  const editArticle = useSelector(state => state.editArticle);
   const articles = useSelector(state => state.articleList.articles)
 
   return (
-    <p>
-      {articles[articleId].content}
-    </p>
+    <p> {articles[editArticle.articleId].content} </p>
   );
 };
 const EditContentForm = (props) => {
+  const editArticle = useSelector(state => state.editArticle);
   const dispatch = useDispatch();
-  const editingText = useSelector(state => state.editContent.inputText);
 
   const handleChangeInputText = (e) => {
-    dispatch(editContentModule.actions.handleChangeInputText(e.target.value));
+    dispatch(editArticleModule.actions.handleChangeInputText({
+      editTarget: "content",
+      text: e.target.value,
+    }));
   }
 
   return (
     <form noValidate autoComplete="off">
       <TextField
+        id="edit-content-field"
         label="Content"
         variant="outlined"
         multiline
         fullWidth
         onChange={handleChangeInputText}
-        value={editingText}
+        value={editArticle.content.inputText}
       >
-        {editingText}
+        {editArticle.content.inputText}
       </TextField>
     </form>
   );
