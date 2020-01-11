@@ -5,23 +5,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
-import { makeStyles } from '@material-ui/core/styles';
 import './addMenuButton.css';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(0),
-    },
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1),
-  },
-}));
 
 const AddMenuButton = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const classes = useStyles();
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -52,19 +39,22 @@ const AddMenuButton = (props) => {
   };
 
   return (
-    <div className={classes.root}>
+    <div>
       <Fab onClick={handleClick}
+        aria-controls="simple-menu"
         className="add-menu-button"
         size="small"
         color="primary"
+        aria-haspopup="true"
       >
         <AddIcon />
       </Fab>
       <Menu
         id="simple-menu"
-        onClick={toggle}
         anchorEl={anchorEl}
+        keepMounted
         open={Boolean(anchorEl)}
+        onClose={handleClose}
       >
         <MenuItem onClick={addNewMainMenu}>Add Main Menu</MenuItem>
         <MenuItem onClick={addNewSecondMenu}>Add 2nd Menu</MenuItem>
