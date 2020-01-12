@@ -66,14 +66,29 @@
   max-height: calc(90vh - 60px - 60px - 30px);
 }
 
+#edit-content > form > div > div {
+  padding: 0;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
 #edit-content p {
   margin: 0;
   padding: 0;
-  padding-left: 14px;
 }
 
-#edit-content-form {
-  width: 100%;
+#edit-content-field {
+  overflow-y: scroll;
+  resize: none;
+}
+
+#markdown {
+  margin: 0;
+  padding: 0;
+  padding-top: 15px;
+  padding-left: 14px;
 }
 
 EditSaveButton {
@@ -81,7 +96,16 @@ EditSaveButton {
   padding: 0;
 }
 
+#markdown {
+  height: calc(90vh - 60px - 60px - 30px);
+  overflow-y: auto;
+}
+
 .edit-save-button {
   margin: 0;
   padding: 0;
+}
+
+.edit-save-button button {
+  width: 80px;
 }

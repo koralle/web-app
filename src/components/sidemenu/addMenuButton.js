@@ -21,10 +21,6 @@ const AddMenuButton = (props) => {
   // dispatch
   const dispatch = useDispatch();
 
-  const toggle = () => {
-    dispatch(articleListModule.actions.toggleIsOpen(props.articleId));
-  };
-
   const addNewMainMenu = () => {
     dispatch(articleListModule.actions.addNewMainMenu(props.articleId))
     handleClose();

@@ -5,7 +5,6 @@ import editArticleModule from '../../modules/editArticleModule';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import EditIcon from '@material-ui/icons/Edit';
-import './editSaveButton.css';
 
 
 // props.editTarget で"title"か"content"を受け取る。
@@ -45,7 +44,7 @@ const EditSaveButton = (props) => {
         <Button
           onClick={toggle}
           variant="contained"
-          color="primary"
+          color="secondary"
           size="small"
           startIcon={<SaveIcon />}
         >
