@@ -89,6 +89,8 @@
   padding: 0;
   padding-top: 15px;
   padding-left: 14px;
+  max-height: calc(90vh - 60px - 60px - 30px);
+  overflow-y: auto;
 }
 
 EditSaveButton {
@@ -96,9 +98,9 @@ EditSaveButton {
   padding: 0;
 }
 
-#markdown {
-  height: calc(90vh - 60px - 60px - 30px);
-  overflow-y: auto;
+#markdown > *{
+  margin: 0;
+  padding: 0;
 }
 
 .edit-save-button {
