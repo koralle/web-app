@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React-Redux-Web-App-koralle
 
-## Available Scripts
+"React-Redux-Web-App-koralle" is a Portfolio with React + Redux.
+This is a web application that can freely configure menus in the sidebar.
 
-In the project directory, you can run:
+# DEMO
 
-### `yarn start`
+Please access [Demo Page](https://react-redux-web-app-koralle.netlify.com)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Features
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* The side menu has three layers. By clicking the “+” button next to the menu of each layer, a menu of the same layer or a lower layer can be added.
+* One page is created on the right side of the main area for each menu, and is displayed when the menu is selected.
+* The page in the main area is composed of a title and a main page, and can be edited.
+* The main text can be written in markdown when editing. After editing and saving, markdown is rendered in HTML.
 
-### `yarn test`
+# Requirement
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* NodeJS >= v12.13.1
+* create-react-app >= v3.3.0
+* Yarn >= 1.12.1
+* @redux.js/toolkit >= 1.2.1
+* react-markdown >= 4.3.1
+* react-redux >= 7.1.3
+* @material-ui/core >= 4.8.3
+* @material-ui/icons >= 4.5.1
 
-### `yarn build`
+# Installation
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+With npm command,
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+"""bash
+npm install --save create-react-app @reduxjs/toolkit react-markdown react-redux @material-ui/core @material-ui/icons
+"""
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+or with yarn command,
 
-### `yarn eject`
+"""bash
+yarn add create-react-app @reduxjs/toolkit react-markdown react-redux @material-ui/core @material-ui/icons
+"""
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Usage
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+With npm command,
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+"""
+git clone https://github.com/koralle/react-redux-web-app
+cd react-redux-web-app
+npm start
+"""
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+"""bash
+git clone https://https://github.com/koralle/react-redux-web-app
+cd react-redux-web-app
+yarn start
+"""
 
-## Learn More
+# Note
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Author
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Kosugiyama Mamoru
+* E-mail:mkhd7930@gmail.com
